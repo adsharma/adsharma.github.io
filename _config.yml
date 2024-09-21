@@ -15,7 +15,7 @@ timezone:
 # ↓ --------------------------
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar:
+avatar: assets/img/favicons/favicon.png
 
 title: Random Musings # the main title
 
