@@ -132,4 +132,4 @@ Once you have the high level and storage types figured out, run them through a c
 flattools (supports 4 popular type safe languages!) and write your business logic in terms of those types.
 
 So if this is actually a thing, doesn't it make sense to create a repository of high level types
-without using complex technologies? That is the idea behind [this github meta repo](http://github.com/adsharma/fbs-schemas).
+without using complex technologies? That is the idea behind [this github meta repo](https://github.com/adsharma/fbs-schemas).

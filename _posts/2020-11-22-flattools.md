@@ -45,7 +45,7 @@ class Cat:
 
 ## Example IDL
 
-This work ([flattools](http://github.com/adsharma/flattools)) separates these two concerns as described above. It adopts the flatbuffer IDL (since it doesn't have the
+This work ([flattools](https://github.com/adsharma/flattools)) separates these two concerns as described above. It adopts the flatbuffer IDL (since it doesn't have the
 field numbering concern in the IDL, significantly simplyfying the language). Attributes have been used to support 
 high level type safe concepts such as Protocols and Views (a concept similar to graphql fragments).
 
