@@ -12,13 +12,17 @@ Some progress was made in 2022 towards building this common language. This [pape
 
 Specifically it allows you to run training once and then compute embeddings that are much smaller in size (64 bytes vs 1024 bytes), that allows an implementer to make quality vs performance/storage trade-off without having to run training N times. In other words you can think of MRL as doing hierarchical clustering over a common semantic space.
 
-However, if you take one of the language models that uses Matryoshka models (I used `mxbai-embed-large-v1`) and embed the names of members of congress, the numbers it spits out mean nothing. They have nothing in common.
+However, if you take one of the language models that uses Matryoshka method (I used `mxbai-embed-large-v1`) and embed the names of members of congress, the numbers it spits out mean nothing. They have nothing in common.
 
 That lead to realization that Matryoshka based models have a common understanding of the language, but have no understanding of the underlying concepts.
 
 ## Combining hierarchical clustering of language and human knowledge
 
-Some concepts have meanings that are independent of the language. For example former US presidents `Barack Obama` and `Donald Trump` may have something in common in Japanese and Spanish. But each of them embeds the corresponding words in a different embedding space.
+Some concepts have meanings that are independent of the language. For example former US presidents `Barack Obama` and `Donald Trump` may have different words expressing the same concept in Japanese and Spanish. But if you embed them using a Spanish model and a Japanese model, you get different numbers!
+
+What about multi-lingual embedding models? Sure, they'll align the concepts i.e. the Spanish word and the Japanese word for a concept return something similar. But then again, similar concepts ("two former presidents")  will have embeddings that have very little cosine similarity.
+
+I should note that these ideas are not new. The first reference I can find is [KEPLER](https://deepgraphlearning.github.io/project/wikidata5m). The novelty here is to use an improved dataset for the alignment and some thoughts about combining with Matryoshka.
 
 So how do we align these Matryoshka language models in a common semantic space?
 
@@ -92,7 +96,7 @@ select vertex, format('{:x}', combined), part3, part2, part1 from leiden_c_flat 
 
 ## What next?
 
-There are attempts to compute an embeddings that combine both concepts. References I could find: [HybridRAG](https://arxiv.org/html/2408.04948v1) and [Joint Alignment](https://github.com/dki-lab/joint-kb-text-embedding).
+There are attempts to compute embeddings that combine both concepts. References I could find: [HybridRAG](https://arxiv.org/html/2408.04948v1) and [Joint Alignment](https://github.com/dki-lab/joint-kb-text-embedding).
 
 However, I could not find anyone who sets up a periodically recomputed jointly aligned kb-language embedding.
 
