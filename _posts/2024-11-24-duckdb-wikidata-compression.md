@@ -1,7 +1,7 @@
 # Compressing Wikidata Using DuckDB
 
-Wikidata publishes a 40GB blob called [latest-truthy.nt.bz2](https://dumps.wikimedia.org/wikidatawiki/entities/latest-truthy.nt.bz2)every two days. This is the largest publicly available human knowledge base as a graph. For someone interested in following changes
-to this graph, we present a way to consume 8x less network bandwidth.
+Wikidata publishes a 40GB blob called [latest-truthy.nt.bz2](https://dumps.wikimedia.org/wikidatawiki/entities/latest-truthy.nt.bz2) every two days. This is the largest publicly available human knowledge base as a graph. For someone interested in following changes
+to this graph, we present a way to consume *8x* less network bandwidth.
 
 The file contains "statements" known to be true.  Let's examine the first node in the dump: Q31 (Belgium).
 
@@ -19,7 +19,7 @@ Q31 P36 Q239 # Brussels is the capital of Belgium.
 
 as you can guess, P36 is a "property", specifically means the "capital of" and Q239 is the city of Brussels.
 
-If you were to construct a graph from this data, you care only about rows of the form <Qxx Pxx Qxx>. But wikidata doesn't
+If you were to construct a graph from this data, you care only about rows of the form `<Qxx Pxx Qxx>`. But wikidata doesn't
 publish those subsets. To quantify the benefit I ran some experiments.
 
 ## Experiment
