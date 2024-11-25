@@ -34,7 +34,7 @@ You can wrap this in a loop if you prefer the download to resume automatically.
 
 ### Extracting signal from the data
 
-While the download was still going on, I ran [truthy.py](https://gist.github.com/adsharma/71bd591ea5d4242ec4e250e7fc7d20d1) in parallel. It processed the useful parts of the input and spit out a `truthy.db` which was only about ~3GB in size on disk.
+While the download was still going on, I ran [truthy.py](https://gist.github.com/adsharma/71bd591ea5d4242ec4e250e7fc7d20d1) in parallel. It processed the useful parts of the input and spit out a `truthy.db` which was only about ~4.3GB in size on disk.
 
 ```
 bzcat latest*.gz2 | ./truthy.py
@@ -60,7 +60,7 @@ $ du -sh clean.db
 2.8G    clean.db
 ```
 
-The size on disk is a bit smaller because of lz4 compression. In other words, we would be downloading only 5GB instead of 40GB for savings of 8x!
+The size on disk is a bit smaller because of lz4 compression. In other words, we would be downloading only 5GB instead of 40GB for savings of 8x! Savings could be 16x if `clean.db` is also compressed with lz4.
 
 ### Request to wikimedia folks
 
