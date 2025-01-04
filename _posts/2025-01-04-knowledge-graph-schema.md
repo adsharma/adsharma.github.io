@@ -2,7 +2,7 @@
 
 I'll keep this one short. There have been a bunch of controversies around wikipedia and it's lack of viewpoint diversity and undue influence of state level actors, the rich and the powerful. Many LLMs have been trained on this data and continue to propagate what's written there and more importantly suppress what's NOT written there.
 
-The most successful universal schema I'm aware of is the once used by Facebook [Tao](https://engineering.fb.com/2013/06/25/core-infra/tao-the-power-of-the-graph/). Very simple. Nodes and edges with a type, one timestamp and an optional small blob. This schema was duplicated by a number of similar systems in the NoSQL era.
+The most successful universal schema I'm aware of is the one used by Facebook [Tao](https://engineering.fb.com/2013/06/25/core-infra/tao-the-power-of-the-graph/). Very simple. Nodes and edges with a type, one timestamp and an optional small blob. This schema was duplicated by a number of similar systems in the NoSQL era.
 
 However, this is insufficient to represent human knowledge in the Agentic era where concerns about the truthfulness of these models and copyright infringement have been some of the top concerns.
 
