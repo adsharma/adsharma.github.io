@@ -10,7 +10,7 @@ A more realistic expectation that results in sustainable innovation is an archit
 
 A second idea that has gotten some traction is the idea of cognitive load. Human brain has a limited capacity to process details. So use that capacity for important things and leave the rest to machines.
 
-What does it mean for specification languages? It means what we can't lower it directly into assembly or byte code and get it work. What happens when things break? Who will debug and at what level of abstraction? Can a front end developer understand the rust borrow checker?
+What does it mean for specification languages? It means what we can't lower it directly into assembly or byte code and get it to work. What happens when things break? Who will debug and at what level of abstraction? Can a front end developer understand the rust borrow checker?
 
 One answer to these questions is to use many intermediate layers at different levels of abstraction which are appropriate for the problem being debugged. Are you looking to solve a O(n**2) loop? Use python. Are you debugging memory leaks? May be use a lower layer. Is your CPU getting into thermal throttling because you used too many vector instructions? Perhaps look into EBPF or a systems programming language.
 
@@ -44,7 +44,7 @@ After these different segments are transpiled, they're merged by a build system 
 
 In this [hello-wuffs.py](https://github.com/py2many/py2many/blob/main/tests/cases/hello-wuffs.py) example code, we could use the transpiler for `class parser` and a code LLM for the [rest of the code](https://gist.github.com/adsharma/c29ec0445752407b8c7b26b803cc54d8) to translate `pytest` to `tokio::test`. The resulting code should be more robust/correct than using either approach by itself.
 
-Please note that in this example, the code LLM took the liberty to completely rewrite `parse_u32`, change types, use a library function. With some luck the code may be correct and pass unit tests also. But that's if you're lucky and the LLM is not hallucinating. Using py2many or a similar implementation is a much better bet.
+Please note that in this example, the code LLM took the liberty to completely rewrite `parse_u32`, change types, and use a library function. With some luck the code may be correct and pass unit tests also. But that's if you're lucky and the LLM is not hallucinating. Using py2many or a similar implementation is a much better bet.
 
 But for the rest of the code, this LLM outperformed py2many.
 
