@@ -42,7 +42,11 @@ In a third stage, an agent is going to look at the annotations in the code based
 
 After these different segments are transpiled, they're merged by a build system in the target language, compiled into a binary and shipped to customers.
 
-In this [hello-wuffs.py](https://github.com/py2many/py2many/blob/main/tests/cases/hello-wuffs.py) example code, we could use the transpiler for `class parser` and a code LLM for the rest of the code to translate `pytest` to `tokio::test`. The resulting code should be more robust/correct than using either approach by itself.
+In this [hello-wuffs.py](https://github.com/py2many/py2many/blob/main/tests/cases/hello-wuffs.py) example code, we could use the transpiler for `class parser` and a code LLM for the [rest of the code](https://gist.github.com/adsharma/c29ec0445752407b8c7b26b803cc54d8) to translate `pytest` to `tokio::test`. The resulting code should be more robust/correct than using either approach by itself.
+
+Please note that in this example, the code LLM took the liberty to completely rewrite `parse_u32`, change types, use a library function. With some luck the code may be correct and pass unit tests also. But that's if you're lucky and the LLM is not hallucinating. Using py2many or a similar implementation is a much better bet.
+
+But for the rest of the code, this LLM outperformed py2many.
 
 ## Language Incompatibilities
 
