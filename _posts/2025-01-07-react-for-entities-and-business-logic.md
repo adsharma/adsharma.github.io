@@ -16,9 +16,9 @@ In Java, for example, the Enterprise JavaBeans (EJB) framework introduced a rigi
 
 However, as object models became more widespread, developers began to experience the drawbacks of heavy, rigid frameworks. These included:
 
-* Steep learning curves: Complex frameworks require significant investment in training and expertise.  
-* Tight coupling: Object models were often tightly coupled to specific frameworks, making it difficult to switch or replace them.  
-* Inflexibility: Rigid frameworks limited the ability to adapt to changing business requirements.  
+* Steep learning curves: Complex frameworks require significant investment in training and expertise.
+* Tight coupling: Object models were often tightly coupled to specific frameworks, making it difficult to switch or replace them.
+* Inflexibility: Rigid frameworks limited the ability to adapt to changing business requirements.
 * Performance overhead: Heavy object models introduced significant performance overhead, impacting application responsiveness.
 
 ## The Emergence of POJO and Similar Concepts
@@ -39,15 +39,39 @@ In Python, the emphasis on simple, flexible data structures continues, with popu
 
 Modern object models provide robust transaction management capabilities, allowing developers to easily manage database transactions. In Java, for example, the Spring Framework provides a comprehensive transaction management system, which allows developers to annotate methods with `@Transactional` to enable transactional behavior.
 
-| @Servicepublic class UserService {        @Autowired    private UserRepository userRepository;        @Transactional    public void createUser(User user) {        userRepository.save(user);    }} |
-| :---- |
+```java
+@Service
+public class UserService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Transactional
+    public void createUser(User user) {
+        userRepository.save(user);
+    }
+}
+```
 
 Similarly, in C\#  Entity Framework provides a `DbContext` class, which manages database transactions. Developers can use the `SaveChanges` method to commit changes to the database.
 
-| public class UserService {        private readonly MyDbContext \_context;        public UserService(MyDbContext context) {        \_context \= context;    }        public void CreateUser(User user) {        \_context.Users.Add(user);        \_context.SaveChanges();    }} |
-| :---- |
+```cs
+public class UserService {
 
-## 
+    private readonly MyDbContext _context;
+
+    public UserService(MyDbContext context) {
+        _context = context;
+    }
+
+    public void CreateUser(User user) {
+        _context.Users.Add(user);
+        _context.SaveChanges();
+    }
+}
+```
+
+##
 
 ## Tracking Modifications to Objects
 
