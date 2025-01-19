@@ -1,19 +1,19 @@
 # Fquery meets SQLModel
 Keep your Graphs and dataclasses and make them even more powerful with SQLModel and DuckDB!
 
-Fquery [started](https://adsharma.github.io/fquery/) as a graph query engine for nested JSON objects (think jq) that's integrated into higher level programming languages with static types. The vision was to make it easy to extract a large application query and ship it to a backend optimizer for whole query execution.
+Fquery [started](https://adsharma.github.io/fquery/) as a graph query engine for nested JSON objects (think jq) that's integrated into higher level programming languages with static types. The vision was to make it easy to extract a large application query and ship it to a backend optimizer for whole query optimization.
 
-SQLModel is a popular ORM for python written by the author of FastAPI which builds on previous work by pydantic (runtime data validation library) and sqlalchemy (SQL toolkit and ORM).
+[SQLModel](https://sqlmodel.tiangolo.com/) is a popular ORM for python written by the author of FastAPI which builds on previous work by pydantic (runtime data validation library) and sqlalchemy (SQL toolkit and ORM).
 
 In the upcoming 0.3 release, fquery seeks to integrate with relational databases by innovating along side SQLModel.
 
 ## What problems are we solving?
 
-While some graph databases use [custom disk formats](https://neo4j.com/developer/kb/understanding-data-on-disk/), a more popular option is to store graphs in a relational database. Facebook stores the graph in MySQL and puts a transactional write through cache in the front.
+While some graph databases use [custom disk formats](https://neo4j.com/developer/kb/understanding-data-on-disk/), a more popular option is to store graphs in a relational database. Facebook stores the graph in MySQL and puts a transactional write through cache in the front. So does pinterest and many other industry paractitioners.
 
-If you want to query neo4j's node store or property store, you have to use a custom language dialect as opposed to query engines optimized for columnar store such as duckdb and more widely used dialects of SQL.
+If you want to query neo4j's node store or property store, you have to use a custom language dialect as opposed to query engines optimized for columnar storage such as duckdb and more widely used dialects of SQL.
 
-If you squint and look at the most optimzied storage layout [block format](https://neo4j.com/videos/nodes-2024-block-format-the-next-generation-graph-native-storage-engine/), the dense store looks like a B+ tree based table.
+If you squint and look at the most optimzied storage layout [block format](https://neo4j.com/videos/nodes-2024-block-format-the-next-generation-graph-native-storage-engine/) in a graph database, the dense store looks like a B+ tree based table.
 
 ## Python Object Ecosystem
 
@@ -38,12 +38,12 @@ class Point:
 
 Dataclasses have had their share of controversies over the years. Some people dislike them because they do too much "magic" behind the scenes such as overriding `__init__`, `__eq__` and a number of other builtin methods in ways that make it convenient, but hard to debug.
 
-```
+```shell
 $ wc -l dataclasses.py 
     1630 dataclasses.py
 ```
 
-There were also controversies around mutability, performance and compatibility with existing code. Some people refuse to use dataclasses for this reason and stick with either classic python objects or use pydantic.
+There were also controversies around complexity, mutability, performance and compatibility with existing code. Some people refuse to use dataclasses for this reason and stick with either classic python objects or use pydantic.
 
 ```python
 from pydantic import BaseModel
@@ -54,9 +54,9 @@ class Point(BaseModel):
     z: int
 ```
 
-In fact, pydantic supports it's own variant of `dataclassses` to make things more interesting. 
+In fact, pydantic supports its own variant of `dataclassses` to make things more interesting.
 
-So which one is better? That question is equivalent to asking if static type checking (favored by dataclasses) is bettern than runtime type checking (favored by pydantic). The answer is: it depends on the use case.
+So which one is better? That question is equivalent to asking if static type checking (favored by dataclasses) is better than runtime type checking (favored by pydantic). The answer is: it depends on the use case.
 
 ## Python's SQL and ORM Ecosystem
 
@@ -76,8 +76,7 @@ class Point(Base):
     z = Column(Integer, nullable=False)
 ```
 
-There are a number of other alternatives, but the most important is Django ORM. Django, like SQLAlchemy is a large, well established project, I suspect SQLAlchemy has a larger mind share than Django's native ORM. Almost all the other web frameworks (Flask and FastAPI)
-use SQLAlchemy. Lately, I found attempts to integrate [Django and SQLAlchemy](https://djangostars.com/blog/merging-django-orm-with-sqlalchemy-for-easier-data-analysis/) to take advantage of [SQLAlchemy Core](https://medium.com/@noransaber685/getting-started-with-sqlalchemy-core-for-beginners-part2-5d8f9becad3f).
+Besides SQLModel, another prominent alternative is Django ORM. Although Django is a well-established project, SQLAlchemy's mindshare appears to be larger, particularly since it's widely used by other web frameworks like Flask and FastAPI. Interestingly, there are efforts to [integrate Django with SQLAlchemy](https://djangostars.com/blog/merging-django-orm-with-sqlalchemy-for-easier-data-analysis/), leveraging SQLAlchemy Core's [capabilities](https://medium.com/@noransaber685/getting-started-with-sqlalchemy-core-for-beginners-part2-5d8f9becad3f) to enhance data analysis, as seen in various examples.
 
 ## Enter SQLModel
 
