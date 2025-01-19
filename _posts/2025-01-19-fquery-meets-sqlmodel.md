@@ -140,7 +140,7 @@ class User:
     ...
 ```
 
-> **_NOTE:_**  We use `SQL` key to keep all the SQLAlchemy/SQLModel related metata separate from any other metadata you may have in your dataclass.
+> **_NOTE:_**  We use `SQL` key to keep all the SQLAlchemy/SQLModel related metadata separate from any other metadata you may have in your dataclass.
 
 This way you can have your cheap 200ns dataclasses and then when you need the power of pydantic and SQLModel, you can summon them on-demand.
 
