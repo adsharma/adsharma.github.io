@@ -1,7 +1,7 @@
 # Fquery meets SQLModel
 Keep your Graphs and dataclasses and make them even more powerful with SQLModel and DuckDB!
 
-Fquery started as a graph query engine for nested JSON objects (think jq) that's integrated into higher level programming languages with static types. The vision was to make it easy to extract a large application query and ship it to a backend optimizer for whole query execution.
+Fquery [started](https://adsharma.github.io/fquery/) as a graph query engine for nested JSON objects (think jq) that's integrated into higher level programming languages with static types. The vision was to make it easy to extract a large application query and ship it to a backend optimizer for whole query execution.
 
 SQLModel is a popular ORM for python written by the author of FastAPI which builds on previous work by pydantic (runtime data validation library) and sqlalchemy (SQL toolkit and ORM).
 
@@ -148,8 +148,8 @@ This way you can have your cheap 200ns dataclasses and then when you need the po
 
 Using the dataclass syntax makes things more verbose vs existing SQLModel syntax. But there is a solution that makes it much better. Here's an example.
 
-![sqlmodel-syntax](link)
-![fquery-sqlmode-syntax](link)
+![sqlmodel-syntax](../assets/img/2025-01-19-sqlmodel-before.png)
+![fquery-sqlmodel-syntax](../assets/img/2025-01-19-sqlmodel-after.png)
 
 A more realistic shopping website example with working integration tests.
 
@@ -185,7 +185,23 @@ The same approach can be trivially extended to support [Property Graphs](https:/
 
 While SQLAlchemy sessions can support method chained queries with `filter`, `limit` and `order_by`, the moment nested objects are involved or you start using `join()` in your query, the object relational impedence mismatch kicks in and things fall apart.
 
-Fquery will take a principled approach, extensive unit tests and lazy materialization to bridge the gap.
+Fquery will take a principled approach, extensive unit tests and lazy materialization to bridge the gap. Example code:
+
+```python
+        resp = (
+            UserQuery([1])
+            .edge("friends")
+            .project(["age", ":id"])
+            .parent()
+            .edge("friends")
+            .project(["name", ":id"])
+            .take(3)
+            .to_json()
+            .send()
+        )
+```
+
+will give you this [data](https://github.com/adsharma/fquery/blob/main/tests/test_data/test_data_two_hop_multiple_project.txt).
 
 ## Roadmap
 
