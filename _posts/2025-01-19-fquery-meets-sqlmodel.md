@@ -30,6 +30,7 @@ class Point:
 In python3.7, `dataclasses` were introduced. They allowed you to use a more compact decorator:
 
 ```python
+@dataclass
 class Point:
     x: int
     y: int
