@@ -1,6 +1,6 @@
 # Improving DuckDB DevX
 
-[DuckDB](https://duckdb.org/), an in-process SQL database, has been gaining traction since its development began in 2018, with a significant surge in interest starting in 2022 [Google Trends](https://trends.google.com/trends/explore?date=today%205-y&geo=US&q=duckdb&hl=en). Despite 57,000 commits from 427 contributors, only 90 have made more than 15 commits, reflecting a tight-knit [core team of contributors](https://github.com/duckdb/duckdb/graphs/contributors).  
+[DuckDB](https://duckdb.org/), an in-process SQL database, has been gaining traction since its development began in 2018, with a significant surge in interest starting in 2022 according to [Google Trends](https://trends.google.com/trends/explore?date=today%205-y&geo=US&q=duckdb&hl=en). Despite 57,000 commits from 427 contributors, only 90 have made more than 15 commits, reflecting a tight-knit [core team of contributors](https://github.com/duckdb/duckdb/graphs/contributors).
 
 As DuckDB grows and adopts a more open stance toward community contributions compared to its row-oriented counterparts, now is the perfect time to enhance the developer experience and make contributing easier.
 
