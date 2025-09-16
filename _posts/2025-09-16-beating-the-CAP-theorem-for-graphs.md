@@ -1,3 +1,7 @@
+---
+layout: post
+title: Beating The CAP Theorem For Graphs
+---
 ## Introduction
 
 Graphs form the backbone of modern information retrieval and knowledge-based decision systems. Drawing from recent breakthroughs in large language models, we can now design storage systems with a fresh perspective. Doing so will require us to combine techniques from information theory, lossless compression algorithms with traditional database indexing. However, we face a fundamental challenge: CAP theorem for graph databases.
@@ -6,7 +10,7 @@ Graphs form the backbone of modern information retrieval and knowledge-based dec
 ## What is the CAP theorem for Graphs?
 
 ![CAP theorem for graphs](../assets/img/2025-09-16-graph-cap.png)
-[CAP theorem](https://en.wikipedia.org/wiki/CAP_theorem) is one of the pillars of distributed systems. It started as Brewer's conjecture, but was later proven by researchers at MIT, making it a theorem. The theorem states that any distributed storage system can provide only two of these three guarantees: ==C==onsistency, ==A==vailability and ==P==artition safety.
+[CAP theorem](https://en.wikipedia.org/wiki/CAP_theorem) is one of the pillars of distributed systems. It started as Brewer's conjecture, but was later proven by researchers at MIT, making it a theorem. The theorem states that any distributed storage system can provide only two of these three guarantees: Consistency, Availability and Partition safety.
 
 In the realm of graph databases, we observe a similar "two out three" situation. You can either have scalable systems that are not fully open source or you can have open source systems designed for small graphs. Details below.
 
