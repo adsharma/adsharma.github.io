@@ -16,7 +16,7 @@ In the 1970s, a fellow named Edgar F Codd made a bunch of rules so you could swa
 
 ## Document Database Advice
 
-The document database wisdom is to try and figure out when to embed a table as a nested JSON instead of having a foreign key on databases that support collections and nested objects (which is a violation of 1NF). Even relational databases such as PostgreSQL support `JSONB` data types. So the advice is not exclusive to document DBs such as MongoDB and Couchbase.
+The document database wisdom is to try and figure out when to embed a table as a nested JSON instead of having a foreign key on databases that support collections and nested objects (which is a violation of 1NF). Even relational databases such as PostgreSQL support `JSONB` data types. So the advice is not exclusive to document DBs.
 
 ## World Normal Form
 
@@ -49,4 +49,4 @@ Without some rules associated with this concept, it remains a blog post and deca
 * Endorsed by other entities in the system. For humans, it could come in the form of social connectivity.
 * Temporal ownership of property. If entity A sells a property to entity B, it needs to be owned by one or the other. Not both.
 
-What other rules would you propose to make such data representation useful to  machine learning and formalize everyday common sense intelligence into a form that models can learn from?
+What other rules would you propose to make such data representations useful to  machine learning and formalize everyday common sense intelligence into a form that models can learn from?
