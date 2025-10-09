@@ -1,3 +1,7 @@
+---
+layout: post
+title: Explainable AI
+---
 # Towards Explainable AI
 
 Large language models consume vast amounts of training data and spit out billions of parameters that have hard to pin down meanings. Embeddings in a higher dimensional space form the basis on which other technologies such as transformers and retrieval augmented generation (RAG) are built.
