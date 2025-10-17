@@ -6,7 +6,7 @@ GraphAr, with its "ar" nod to tar archives, is built for portability, bundling g
 
 ## GraphAr: The Tar of Graphs
 
-Apache GraphAr is your go-to for moving massive graphs between systems. Starting from a database—say, Nebula or Ladybug - you load vertices and edges, then serialize them into a directory of Parquet files: one Parquet file per property (e.g., `vertex_property_name.parquet`, `edge_property_weight.parquet`) plus metadata. This bundle, easily zipped or tarred, is a self-contained artifact ready for bulk loading into another database like JanusGraph. It’s like tarring a directory for rsync: no extraction mid-transit, just a portable, schema-rich payload for cross-system hops.
+Apache GraphAr is your go-to for moving massive graphs between systems. Starting from a database—say, Nebula or Ladybug - you load vertices and edges, then serialize them into a directory of Parquet files. This bundle, easily zipped or tarred, is a self-contained artifact ready for bulk loading into another database like JanusGraph.
 
 ## graph-std: The ISO for Graph Exploration
 
@@ -24,6 +24,9 @@ Despite their CSR foundation, GraphAr and graph-std diverge in execution:
 - **YAML** vs **ladybug catalog**: graph-std prefers keeping metadata about the table in the system catalog of the database. This design is inspired by DuckLake's design.
 - **Naming**: GraphAr uses "vertex" and "edge," aligning with graph theory. graph-std goes with "node" and "edge," nodding to Pythonic simplicity (think NetworkX).
 - **File Structure**: graph-std consolidates into three (or four) Parquet files, using row groups for internal sharding—compact and CLI-friendly. GraphAr requires a directory of Parquet files per property, plus a manifest, favoring schema flexibility but increasing complexity.
+- **Multiple Orderings, Filetypes**: GraphAr allows ORC, Parquet, CSV and JSON. graph-std allows only parquet for now and narrower sorting choices (`ORDER BY src, dst`).
+
+In the end, graph-std makes a practical choice - go with a single SQL `ORDER BY` and leverage DuckDB's `EXPORT DATABASE`. It could support formats other than Parquet in the future (as duckdb's export supports them).
 
 ## Unify or Diverge? The Big Questions
 
