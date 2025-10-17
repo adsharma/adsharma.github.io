@@ -6,7 +6,7 @@ GraphAr, with its "ar" nod to tar archives, is built for portability, bundling g
 
 ## GraphAr: The Tar of Graphs
 
-Apache GraphAr is your go-to for moving massive graphs between systems. Starting from a database—say, GraphScope or a relational store—you load vertices and edges, then serialize them into a directory of Parquet files: one Parquet file per property (e.g., `vertex_property_name.parquet`, `edge_property_weight.parquet`) plus metadata. This bundle, easily zipped or tarred, is a self-contained artifact ready for bulk loading into another database like JanusGraph. It’s like tarring a directory for rsync: no extraction mid-transit, just a portable, schema-rich payload for cross-system hops.
+Apache GraphAr is your go-to for moving massive graphs between systems. Starting from a database—say, Nebula or Ladybug - you load vertices and edges, then serialize them into a directory of Parquet files: one Parquet file per property (e.g., `vertex_property_name.parquet`, `edge_property_weight.parquet`) plus metadata. This bundle, easily zipped or tarred, is a self-contained artifact ready for bulk loading into another database like JanusGraph. It’s like tarring a directory for rsync: no extraction mid-transit, just a portable, schema-rich payload for cross-system hops.
 
 ## graph-std: The ISO for Graph Exploration
 
@@ -16,7 +16,7 @@ graph-std, detailed in its [karate_csr example](https://github.com/adsharma/grap
 - **indptr.parquet**: CSR row pointers, defining where each node’s edges start and end.
 - **node_mapping.parquet** (optional): Vertex relabeling; defaults to an identity mapping if absent.
 
-This setup lets you "mount" the graph by querying directly with DuckDB. For example, to find edges from node 42, you’d run: `SELECT * FROM 'indices.parquet' WHERE row_group_id IN (SELECT row_group_id FROM 'indptr.parquet' WHERE rowid = 42)`. It’s like browsing an ISO without unpacking—ideal for data scientists poking at graphs in Jupyter or CLI-driven analytics.
+This setup lets you "mount" the graph by querying directly with DuckDB or Ladybug. It’s like browsing an ISO without unpacking—ideal for data scientists poking at graphs in Jupyter or CLI-driven analytics.
 
 ## Key Differences: Structure and Style
 
@@ -27,4 +27,4 @@ Despite their CSR foundation, GraphAr and graph-std diverge in execution:
 
 ## Unify or Diverge? The Big Questions
 
-Should GraphAr and graph-std merge into one standard? Their purposes—GraphAr for data transfer, graph-std for exploratory queries—suggest keeping them separate. Unification is also appealing, but we need to solve some design decisions. Middle ground: align on small stuff: adopt "node" over "vertex" for consistency across docs. For massive graphs, such as a 100 GB dataset, graph-std’s single-file approach (e.g., one `indices.parquet`) could become a bottleneck. Sharding into, say, 100 1 GB files (`indices_part_{i}.parquet`) with metadata stitching them together is a fix, but DuckDB’s `EXPORT DATABASE` doesn’t split natively. You’d need a `COPY TO` loop with `FILE_SIZE_BYTES` checks to shard dynamically—a scripting hassle graph-std could address with a built-in CLI flag.
+Should GraphAr and graph-std merge into one standard? Their purposes—GraphAr for data transfer, graph-std for direct queries without ingesting—suggest keeping them separate. Unification is also appealing, but we need to solve some design decisions. Middle ground: align on small stuff: adopt "vertex" over "node" for consistency across docs and make splitting parquet files optional. For massive graphs, such as a 100 GB dataset, graph-std’s single-file approach (e.g., one `indices.parquet`) could become a bottleneck. Sharding into, say, 100 1 GB files (`indices_part_{i}.parquet`) with metadata stitching them together is a fix, but DuckDB’s `EXPORT DATABASE` doesn’t split natively. You’d need a `COPY TO` loop with `FILE_SIZE_BYTES` checks to shard dynamically—a scripting hassle graph-std could address with a built-in CLI flag.
