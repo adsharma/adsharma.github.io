@@ -23,7 +23,7 @@ This setup lets you "mount" the graph by querying directly with DuckDB or Ladybu
 Despite their CSR foundation, GraphAr and graph-std diverge in execution:
 - **YAML** vs **ladybug catalog**: graph-std prefers keeping metadata about the table in the system catalog of the database. This design is inspired by DuckLake's design.
 - **Naming**: GraphAr uses "vertex" and "edge," aligning with graph theory. graph-std goes with "node" and "edge," nodding to Pythonic simplicity (think NetworkX).
-- **File Structure**: graph-std consolidates into three (or four) Parquet files, using row groups for internal sharding—compact and CLI-friendly. GraphAr requires a directory of Parquet files per property, plus a manifest, favoring schema flexibility but increasing complexity.
+- **File Structure**: graph-std consolidates into three (or four) Parquet files, using row groups for internal sharding—compact and CLI-friendly. GraphAr requires a more deeply nested directory of Parquet files, plus a manifest, which allows distributing larger graphs.
 - **Multiple Orderings, Filetypes**: GraphAr allows ORC, Parquet, CSV and JSON. graph-std allows only parquet for now and narrower sorting choices (`ORDER BY src, dst`).
 
 In the end, graph-std makes a practical choice - go with a single SQL `ORDER BY` and leverage DuckDB's `EXPORT DATABASE`. It could support formats other than Parquet in the future (as duckdb's export supports them).
