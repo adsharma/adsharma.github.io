@@ -7,11 +7,14 @@ date: 2026-04-13 00:00:00 +0000
 In his [blog post](https://shah.posthaven.com/llms-are-compute-context-is-memory-inference-speed-is-king), Mehul Shah asks:
 
 > So, what does this (LLMS) all mean for infrastructure like databases? I argue it has three implications:
+>
 > First, the most prosaic implication is that we'll need to build databases **_for_** LLMs. (Higher throughput)
+>
 > The second and more interesting implication is that we will likely build databases **_with_** LLMs. (Rewrite/Custom Develop database code itself)
+>
 > Finally, we will build all of our analytics engines (i.e. data warehouses) **_on_** LLMs and unstructured data will be first-class.
 
-Here we argue that this is a LLM centric view with database as a junior partner trying to adjust itself to the changing reality. we will then present a database maximalist view and then outline ways in which LLMs and Databases can work together as equal partners to solve business problems.
+Here we argue that this is a LLM centric view with database as a junior partner trying to adjust itself to the changing reality. We will then present a database maximalist view and then outline ways in which LLMs and Databases can work together as equal partners to solve business problems.
 
 ## Database Maximalism
 
