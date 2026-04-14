@@ -18,11 +18,13 @@ Here we argue that this is a LLM centric view with database as a junior partner 
 
 ## Database Maximalism
 
-LLMs are themselves a probabilistic graph databases that won the hardware lottery. That's a minor variation what Chaitanya Joshi argues [here](https://arxiv.org/abs/2506.22084).
+LLMs are themselves a probabilistic graph database that won the hardware lottery. That's a minor variation what Chaitanya Joshi argues [here](https://arxiv.org/abs/2506.22084).
 
 Pre-training can be seen as the process of creating a clustered index on the graph followed by a lossy compression of all leaf nodes, leaving only the index around. Key observation: original data is no longer is recoverable because of the lossy compression.
 
 ![Clustered Index](/assets/img/2026-04-13-llms-databases-clustered-index.png)
+
+Lastly, Databases have had a history of using probabilistic data structures - bloom filters, sketches, skip lists and learned indices to speed up query processing. LLMs are the latest iteration of the same trend.
 
 ## LLMs and Databases as equal partners
 
